@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [token, setToken] = useState(false);
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+
+  if(!token) {
+    return (
+      
+      <div className="login-wrapper">
+      <h1>Please Log In</h1>
+ 
+        <label>
+          <p>Username</p>
+          <input type="text" value={username} onChange={(e)=>setusername(e.target.value)} />
+        </label>
+        <label>
+          <p>Password</p>
+          <input type="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
+        </label>
+        <div>
+          <button type="submit" onClick={()=>setToken(true)} >Submit</button>
+        </div>
+    
+    </div>
+
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+     <h1> HomePage </h1>
+     <p>Username is - {username}</p>
+     <p>Password is - {password}</p>
     </div>
   );
 }
